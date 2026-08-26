@@ -1,6 +1,8 @@
-import './style.css'
-import * as THREE from 'three'
+import './style.css';
+import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
 
 // Escena
 const scene = new THREE.Scene();
@@ -10,11 +12,26 @@ const renderer = new THREE.WebGLRenderer({canvas:document.querySelector("#visor3
 renderer.setSize(window.innerWidth, window.innerHeight);
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 
+
 // Geometría
-const cuboMesh = new THREE.BoxGeometry(1, 1, 1);
-const materialCubo = new THREE.MeshStandardMaterial({ color: 0x8B4513});
-const cuboPrueba = new THREE.Mesh(cuboMesh, materialCubo);
-scene.add(cuboPrueba);
+/*<--Eliminar esta linea
+const loader = new GLTFLoader();
+
+loader.load('/src/assets/nombre-del-modelo-1.glb', (gltf) => {
+  const modelo = gltf.scene;
+  scene.add(modelo);
+});
+
+loader.load('/src/assets/nombre-del-modelo-2.glb', (gltf) => {
+  const modelo = gltf.scene;
+  scene.add(modelo);
+});
+
+loader.load('/src/assets/nombre-del-modelo-3.glb', (gltf) => {
+  const modelo = gltf.scene;
+  scene.add(modelo);
+});
+*/ //<--Eliminar esta linea
 
 //Luces
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -22,6 +39,7 @@ scene.add(ambientLight);
 const directionalLight = new THREE.DirectionalLight(0xffffff, 1)
 directionalLight.position.set(5, 5, 5);
 scene.add(directionalLight);
+
 
 // Render
 function render() {
