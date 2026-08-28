@@ -1,3 +1,21 @@
+@font-face {
+  font-family: "GoudyInitial";
+  src: url("./fonts/GoudyIni.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
+  font-family: "MedievalSharp", cursive;
+}
+
+h1::first-letter,
+h2::first-letter,
+p::first-letter {
+  font-family: "GoudyInitial", serif;
+  font-size: 3em;
+  font-weight: normal;
+  line-height: 0.7;
+  color: #8b5e34;
 }
