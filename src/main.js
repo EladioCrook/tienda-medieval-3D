@@ -21,19 +21,19 @@ loader.load('/src/assets/taza1.glb', (gltf) => {
   const modelo = gltf.scene;
   scene.add(modelo);
   modelo.scale.set(20, 20, 20)
-  });
-  
-  /*<--Eliminar esta linea
-loader.load('/src/assets/nombre-del-modelo-2.glb', (gltf) => {
-  const modelo = gltf.scene;
-  scene.add(modelo);
 });
 
-loader.load('/src/assets/nombre-del-modelo-3.glb', (gltf) => {
+loader.load('/src/assets/taza2.glb', (gltf) => {
   const modelo = gltf.scene;
   scene.add(modelo);
+  modelo.scale.set(20, 20, 20)
 });
-*/ //<--Eliminar esta linea
+
+loader.load('/src/assets/taza3.glb', (gltf) => {
+  const modelo = gltf.scene;
+  scene.add(modelo);
+  modelo.scale.set(20, 20, 20)
+});
 
 //Luces
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
