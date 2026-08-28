@@ -1,15 +1,48 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap" rel="stylesheet">
     <title>tienda-medieval-3d</title>
   </head>
+
   <body>
     <div id="app">
-      <canvas id="visor3d"></canvas>
+      <canvas id="visor3d" style="display: none;"></canvas>
+
+      <section id="presentacion">
+        <h1>Bienvenido seáis a nuestra humilde  alfarería</h1>
+        <p>En nuestra tienda encontraréis diversos avalorios dignos de vuestro gusto.</p>
+        <p>Tenemos a su disposición ésta remesa de tazas de las cuales alguna seguro capta vuestra atención.</p>
+
+      </section>
+
+      <section id="galeria">
+        <div class="tarjeta-producto" data-taza="1">
+          <img src="/src/assets/taza1-thumb.png" alt="Taza 1" />
+        </div>
+
+        <div class="tarjeta-producto" data-taza="2">
+          <img src="/src/assets/taza2-thumb.png" alt="Taza 2" />
+        </div>
+
+        <div class="tarjeta-producto" data-taza="3">
+          <img src="/src/assets/taza3-thumb.png" alt="Taza 3" />
+        </div>
+      </section>
+
+      <section id="vista-producto" style="display: none;">
+        <div id="descripcion">
+          <h2 id="nombre-producto"></h2>
+          <p id="texto-producto"></p>
+        </div>
+      </section>
     </div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
