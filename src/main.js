@@ -17,23 +17,19 @@ const orbitControls = new OrbitControls(camera, renderer.domElement);
 // Geometría
 const loader = new GLTFLoader();
 
-loader.load('/src/assets/taza1.glb', (gltf) => {
-  const modelo = gltf.scene;
-  scene.add(modelo);
-  modelo.scale.set(20, 20, 20)
-});
+let modeloActual = null
 
-loader.load('/src/assets/taza2.glb', (gltf) => {
+function cargarTaza(numero) {
+  loader.load(`/src/assets/taza${numero}.glb`, (gltf) => {
+    if (modeloActual !== null) {
+      scene.remove(modeloActual)
+    }
   const modelo = gltf.scene;
   scene.add(modelo);
+  modeloActual = modelo
   modelo.scale.set(20, 20, 20)
 });
-
-loader.load('/src/assets/taza3.glb', (gltf) => {
-  const modelo = gltf.scene;
-  scene.add(modelo);
-  modelo.scale.set(20, 20, 20)
-});
+}
 
 //Luces
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
@@ -49,3 +45,25 @@ function render() {
 }
 
 renderer.setAnimationLoop(render);
+
+
+// Numeración de la galería
+const tarjetas = document.querySelectorAll(".tarjeta-producto")
+
+const presentacion = document.querySelector("#presentacion");
+const galeria = document.querySelector("#galeria");
+const visor3d = document.querySelector("#visor3d");
+const vistaProducto = document.querySelector("#vista-producto");
+
+tarjetas.forEach((tarjeta) => {
+  tarjeta.addEventListener("click", () => {
+    const numero = tarjeta.dataset.taza;
+
+    cargarTaza(numero);
+
+    presentacion.style.display = "none"
+    galeria.style.display = "none"
+    visor3d.style.display = "block"
+    vistaProducto.style.display = "flex"
+  })
+});
