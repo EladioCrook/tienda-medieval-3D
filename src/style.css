@@ -19,3 +19,12 @@ p::first-letter {
   line-height: 0.7;
   color: #8b5e34;
 }
+
+#vista-producto {
+  display: flex;
+}
+
+#visor3d {
+  width: 60%;
+  height: 500px;
+}

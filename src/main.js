@@ -6,11 +6,11 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 // Escena
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const visor3d = document.querySelector("#visor3d");
+const camera = new THREE.PerspectiveCamera(75, visor3d.clientWidth / visor3d.clientHeight, 0.1, 1000);
 camera.position.z = 5;
 camera.position.y= 3;
 const renderer = new THREE.WebGLRenderer({canvas:document.querySelector("#visor3d")});
-renderer.setSize(window.innerWidth, window.innerHeight);
 const orbitControls = new OrbitControls(camera, renderer.domElement);
 
 
@@ -24,11 +24,11 @@ function cargarTaza(numero) {
     if (modeloActual !== null) {
       scene.remove(modeloActual)
     }
-  const modelo = gltf.scene;
-  scene.add(modelo);
-  modeloActual = modelo
-  modelo.scale.set(20, 20, 20)
-});
+    const modelo = gltf.scene;
+    scene.add(modelo);
+    modeloActual = modelo
+    modelo.scale.set(20, 20, 20)
+  });
 }
 
 //Luces
@@ -43,6 +43,12 @@ scene.add(directionalLight);
 function render() {
   renderer.render(scene, camera);
 }
+function ajustarTamano() {
+  camera.aspect = visor3d.clientWidth / visor3d.clientHeight;
+  camera.updateProjectionMatrix();
+
+  renderer.setSize(visor3d.clientWidth, visor3d.clientHeight);  
+}
 
 renderer.setAnimationLoop(render);
 
@@ -52,7 +58,6 @@ const tarjetas = document.querySelectorAll(".tarjeta-producto")
 
 const presentacion = document.querySelector("#presentacion");
 const galeria = document.querySelector("#galeria");
-const visor3d = document.querySelector("#visor3d");
 const vistaProducto = document.querySelector("#vista-producto");
 
 tarjetas.forEach((tarjeta) => {
@@ -65,5 +70,7 @@ tarjetas.forEach((tarjeta) => {
     galeria.style.display = "none"
     visor3d.style.display = "block"
     vistaProducto.style.display = "flex"
+
+    ajustarTamano()
   })
 });
