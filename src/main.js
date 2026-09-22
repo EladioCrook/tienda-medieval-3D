@@ -63,6 +63,7 @@ const datosTazas = {
 
 const nombre = document.querySelector("#nombre-producto");
 const descripcion = document.querySelector("#texto-producto");
+const precio = document.querySelector("#precio-producto");
 
 
 // Numeración de la galería
@@ -87,5 +88,6 @@ tarjetas.forEach((tarjeta) => {
 
     nombre.textContent = datosTazas[numero].nombre
     descripcion.textContent = datosTazas[numero].descripcion
+    precio.textContent = datosTazas[numero].precio
   })
 });
