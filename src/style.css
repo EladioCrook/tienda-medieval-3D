@@ -20,11 +20,29 @@ p::first-letter {
   color: #8b5e34;
 }
 
-#vista-producto {
+#tarjeta-flotante {
   display: flex;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fdf6e3;
+  border-radius: 8px;
+  padding: 20px;
+  width: 80%;
+  max-width: 900px;
 }
 
 #visor3d {
-  width: 60%;
-  height: 500px;
+  width: 50%;
+  aspect-ratio: 1 / 1;
+}
+
+#vista-producto {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
 }
