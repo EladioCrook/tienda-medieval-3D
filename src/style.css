@@ -46,3 +46,9 @@ p::first-letter {
   height: 100%;
   background: rgba(0, 0, 0, 0.6);
 }
+
+#cerrar-vista {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}

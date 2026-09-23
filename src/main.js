@@ -85,6 +85,7 @@ const tarjetas = document.querySelectorAll(".tarjeta-producto")
 const presentacion = document.querySelector("#presentacion");
 const galeria = document.querySelector("#galeria");
 const vistaProducto = document.querySelector("#vista-producto");
+const cerrarVista = document.querySelector("#cerrar-vista")
 
 tarjetas.forEach((tarjeta) => {
   tarjeta.addEventListener("click", () => {
@@ -103,4 +104,16 @@ tarjetas.forEach((tarjeta) => {
     descripcion.textContent = datosTazas[numero].descripcion
     precio.textContent = datosTazas[numero].precio
   })
+});
+
+cerrarVista.addEventListener("click", () => {
+  presentacion.style.display = "block"
+  galeria.style.display = "block"
+  visor3d.style.display = "none"
+  vistaProducto.style.display = "none"
+
+  if (modeloActual !== null) {
+  scene.remove(modeloActual);
+  modeloActual = null;
+}
 });
